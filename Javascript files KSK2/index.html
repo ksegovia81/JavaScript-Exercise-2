@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz Exercises</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .exercise {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #3498db;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .output {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>FizzBuzz Exercises</h1>
+    
+    <div class="exercise">
+        <h2>Exercise 1: Original FizzBuzz (1-100)</h2>
+        <button onclick="runOriginalFizzBuzz()">Run Original FizzBuzz</button>
+        <div id="output1" class="output"></div>
+    </div>
+    
+    <div class="exercise">
+        <h2>Exercise 2: Modified FizzBuzz (Even numbers 2-500)</h2>
+        <button onclick="runModifiedFizzBuzz()">Run Modified FizzBuzz</button>
+        <div id="output2" class="output"></div>
+    </div>
+
+    <script>
+        function fizzBuzz(start, end, step, checkEven) {
+            let result = [];
+            for (let i = start; i <= end; i += step) {
+                if (!checkEven || i % 2 === 0) {
+                    let output = '';
+                    if (i % 3 === 0) output += 'Fizz';
+                    if (i % 5 === 0) output += 'Buzz';
+                    result.push(output || i);
+                }
+            }
+            return result;
+        }
+
+        function runOriginalFizzBuzz() {
+            const result = fizzBuzz(1, 100, 1, false);
+            document.getElementById('output1').innerHTML = result.join('<br>');
+        }
+
+        function runModifiedFizzBuzz() {
+            const result = fizzBuzz(2, 500, 2, true);
+            document.getElementById('output2').innerHTML = result.join('<br>');
+        }
+    </script>
+</body>
+</html>
